@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: users
+
+aws:
+  secret-key: "test"
+  access-key: "test"
+  topic: "arn:aws:sns:us-east-1:000000000000:ms-users-topic"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        base-path: /actuator/
+        include: "*"
+        exclude: "env,beans"
+
+server.port: 8099
