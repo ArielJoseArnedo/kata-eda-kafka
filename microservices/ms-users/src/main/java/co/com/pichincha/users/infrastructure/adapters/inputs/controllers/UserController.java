@@ -3,6 +3,7 @@ package co.com.pichincha.users.infrastructure.adapters.inputs.controllers;
 import co.com.pichincha.users.application.commands.RegisterUserCommand;
 import co.com.pichincha.users.infrastructure.adapters.inputs.dtos.UserDTO;
 import co.com.pichincha.users.infrastructure.events.CommandProcessor;
+import co.com.pichincha.users.infrastructure.publishers.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +14,13 @@ import reactor.core.publisher.Mono;
 
 
 @RestController
-public class UserController implements CommandProcessor {
+public class UserController extends CommandProcessor {
 
     private final RegisterUserCommand registerUserCommand;
 
     @Autowired
-    public UserController(RegisterUserCommand registerUserCommand) {
+    public UserController(Publisher publisher, RegisterUserCommand registerUserCommand) {
+        super(publisher);
         this.registerUserCommand = registerUserCommand;
     }
 

@@ -1,11 +1,17 @@
 spring:
   application:
-    name: users
+    name: open-banking
 
   kafka:
     bootstrap-servers: localhost:9092
     producer:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      topic: ms-open-banking-topic
+    consumer:
+      group-id: open-banking
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       topic: ms-users-topic
 
 management:
@@ -16,4 +22,4 @@ management:
         include: "*"
         exclude: "env,beans"
 
-server.port: 8099
+server.port: 8100

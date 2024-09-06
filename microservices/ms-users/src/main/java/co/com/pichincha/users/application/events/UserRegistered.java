@@ -7,15 +7,15 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserRegistered implements Event<UserDTO> {
 
-    private final UserDTO userDTO;
+    private final UserDTO data;
 
     @Override
-    public String name() {
+    public String getName() {
         return "UserRegistered";
     }
 
     @Override
-    public UserDTO data() {
-        return userDTO;
+    public UserDTO getData() {
+        return data;
     }
 }
